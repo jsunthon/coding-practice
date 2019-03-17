@@ -1,7 +1,6 @@
-package com.james.io.regioncolor;
+package com.james.io.graph.regioncolor;
 
 import com.james.io.graph.model.Mark;
-import com.james.io.graph.regioncolor.ColorEnclosedRegionSolution;
 import org.junit.Test;
 
 import java.util.ArrayList;

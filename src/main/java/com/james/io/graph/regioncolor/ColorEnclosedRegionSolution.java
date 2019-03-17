@@ -8,7 +8,7 @@ import java.util.*;
 
 /**
  * Solution to the Compute Enclosed Region problem in Elements of Programming Interviews in Java,
- *
+ * <p>
  * Problem 19.3 on page 365
  */
 public class ColorEnclosedRegionSolution {
@@ -25,7 +25,7 @@ public class ColorEnclosedRegionSolution {
 
     /**
      * Colors regions that cannot reach the boundary.
-     *
+     * <p>
      * The color to color with is fixed as 'B'
      */
     public void color() {
