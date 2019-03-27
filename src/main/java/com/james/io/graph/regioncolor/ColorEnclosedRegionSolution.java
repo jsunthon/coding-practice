@@ -7,7 +7,7 @@ import com.james.io.graph.model.Mark;
 import java.util.*;
 
 /**
- * Solution to the Compute Enclosed Region problem in Elements of Programming Interviews in Java,
+ * CustomTransformStringSolution to the Compute Enclosed Region problem in Elements of Programming Interviews in Java,
  * <p>
  * Problem 19.3 on page 365
  */

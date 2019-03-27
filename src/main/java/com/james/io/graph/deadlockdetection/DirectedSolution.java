@@ -6,7 +6,7 @@ import com.james.io.graph.deadlockdetection.model.GraphVertex.Color;
 import java.util.List;
 
 /**
- * Solution for problem 19.4 on page 368 of Elements of Programming Interviews
+ * CustomTransformStringSolution for problem 19.4 on page 368 of Elements of Programming Interviews
  * in Java
  */
 public class DirectedSolution {
