@@ -12,8 +12,6 @@ public class CustomTransformStringSolution {
                                      String s,
                                      String t) {
         Map<String, Set<String>> graph = getGraph(dict);
-        List<String> path = new ArrayList<>();
-        path.add(s);
         dfs(graph, Stream.of(s).collect(Collectors.toCollection(LinkedHashSet::new)), s, t);
         return res;
     }
@@ -23,7 +21,7 @@ public class CustomTransformStringSolution {
                      String s,
                      String t) {
         if (s.equals(t)) {
-            res = res == -1 ? seen.size() : Math.min(seen.size(), res);
+            res = res == -1 ? seen.size() - 1 : Math.min(seen.size() - 1, res);
             return;
         }
         if (graph.containsKey(s)) {
