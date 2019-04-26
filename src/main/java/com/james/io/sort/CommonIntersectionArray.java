@@ -6,12 +6,12 @@ import java.util.List;
 /**
  * Custom solution for problem 14.1 of EPI
  */
-public class MergeTwoSortedArray {
+public class CommonIntersectionArray {
 
-    private MergeTwoSortedArray() {}
+    private CommonIntersectionArray() {}
 
-    public static List<Integer> merge(List<Integer> a,
-                                      List<Integer> b) {
+    public static List<Integer> getIntersection(List<Integer> a,
+                                                List<Integer> b) {
         List<Integer> res = new ArrayList<>();
         int curr;
         for (int i = 0; i < a.size(); i++) {
@@ -21,6 +21,32 @@ public class MergeTwoSortedArray {
                 res.add(curr);
             }
         }
+        return res;
+    }
+
+    public static List<Integer> getIntersectionEpi(List<Integer> list1,
+                                                   List<Integer> list2) {
+        final List<Integer> res = new ArrayList<>();
+        int i = 0;
+        int j = 0;
+        int list1Curr;
+        int list2Curr;
+        while (i < list1.size() && j < list2.size()) {
+            list1Curr = list1.get(i);
+            list2Curr = list2.get(j);
+            boolean elementsAreSame = list1Curr == list2Curr;
+            boolean haveNotSeenThemPrior = i == 0 || list1Curr != list1.get(i - 1);
+            if (elementsAreSame && haveNotSeenThemPrior) {
+                res.add(list1Curr);
+                i++;
+                j++;
+            } else if (list1Curr < list2Curr) {
+                i++;
+            } else {
+                j++;
+            }
+        }
+
         return res;
     }
 
