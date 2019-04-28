@@ -7,6 +7,28 @@ import java.util.List;
  */
 public class MinimumBinarySearchSolution {
 
+    public static int epiBinarySearch(List<Integer> list, int key) {
+        int low = 0;
+        int high = list.size() - 1;
+        int midValue;
+        int midIndex;
+        int result = - 1;
+        while (low <= high) {
+            midIndex = low + ((high - low) / 2);
+            midValue = list.get(midIndex);
+
+            if (key > midValue) {
+                low = midIndex + 1;
+            } else if (key == midValue) {
+                result = midIndex;
+                high = midIndex - 1;
+            } else {
+                high = midIndex - 1;
+            }
+        }
+        return result;
+    }
+
     // my custom solution, which i think is still O(log n ) time complexity, O(1) space
     public static int customBinarySearch(List<Integer> list, int key) {
         int low = 0;
