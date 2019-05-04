@@ -33,4 +33,34 @@ public class Sorted2dArraySolutionTest {
     public void searchNotExistsGreater() {
         Assert.assertFalse(Sorted2dArraySolution.search(lists1, 100));
     }
+
+    @Test
+    public void searchBruteMid() {
+        Assert.assertTrue(Sorted2dArraySolution.searchBrute(lists1, 8));
+    }
+
+    @Test
+    public void searchBruteNotExistsLesser() {
+        Assert.assertFalse(Sorted2dArraySolution.searchBrute(lists1, -2));
+    }
+
+    @Test
+    public void searchBruteNotExistsGreater() {
+        Assert.assertFalse(Sorted2dArraySolution.searchBrute(lists1, 100));
+    }
+
+    @Test
+    public void searchBinaryMid() {
+        Assert.assertTrue(Sorted2dArraySolution.searchBinary(lists1, 8));
+    }
+
+    @Test
+    public void searchBinaryNotExistsLesser() {
+        Assert.assertFalse(Sorted2dArraySolution.searchBinary(lists1, -2));
+    }
+
+    @Test
+    public void searchBinaryNotExistsGreater() {
+        Assert.assertFalse(Sorted2dArraySolution.searchBinary(lists1, 100));
+    }
 }
