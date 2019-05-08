@@ -6,8 +6,6 @@ import org.junit.Test;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.Assert.*;
-
 public class Sorted2dArraySolutionTest {
 
     private static final List<Integer> list1 = Arrays.asList(-1, 2, 4, 4, 6);
@@ -18,7 +16,8 @@ public class Sorted2dArraySolutionTest {
     private static final List<Integer> list6 = Arrays.asList(8, 10, 12, 13, 40);
 
     private static final List<List<Integer>> lists1 = Arrays.asList(list1, list2,
-                                                    list3, list4, list5, list6);
+            list3, list4, list5, list6);
+
     @Test
     public void searchMid() {
         Assert.assertTrue(Sorted2dArraySolution.search(lists1, 8));

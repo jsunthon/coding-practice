@@ -4,7 +4,7 @@ import java.util.List;
 
 /**
  * 18.6 Gas Summing Problem
- *
+ * <p>
  * Reduce from O(n^2) time complexity to O(n)
  */
 public class SumGas {
@@ -22,7 +22,7 @@ public class SumGas {
 
     public static int getAmple(List<Integer> gallons,
                                List<Integer> distances) {
-        CityAndGas min = new CityAndGas(0,0 );
+        CityAndGas min = new CityAndGas(0, 0);
         int remainingGallons = 0;
         for (int i = 1; i < gallons.size(); i++) {
             remainingGallons += gallons.get(i - 1) - distances.get(i - 1) / MPG;

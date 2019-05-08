@@ -2,7 +2,10 @@ package com.james.io.sort;
 
 import com.james.io.sort.model.Name;
 
-import java.util.*;
+import java.util.Collections;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
@@ -19,6 +22,7 @@ public class NameDuplicateArray {
     /**
      * O(n) time
      * O(n) space
+     *
      * @return
      */
     public Set<Name> eliminateDuplicatesBruteForce() {

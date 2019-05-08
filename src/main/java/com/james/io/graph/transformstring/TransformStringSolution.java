@@ -18,7 +18,7 @@ public class TransformStringSolution {
             wordQueue.offer(s);
 
             String current;
-            while ((current = wordQueue.poll()) != null)  {
+            while ((current = wordQueue.poll()) != null) {
                 if (current.equals(t)) {
                     return wordDistanceMap.get(current);
                 }

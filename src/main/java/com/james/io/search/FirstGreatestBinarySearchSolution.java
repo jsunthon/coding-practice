@@ -11,7 +11,7 @@ public class FirstGreatestBinarySearchSolution {
                                                   int key) {
         int low = 0;
         int high = list.size() - 1;
-        int result = - 1;
+        int result = -1;
         int mid;
         int midValue;
 

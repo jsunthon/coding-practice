@@ -8,7 +8,8 @@ import java.util.List;
  */
 public class CommonIntersectionArray {
 
-    private CommonIntersectionArray() {}
+    private CommonIntersectionArray() {
+    }
 
     public static List<Integer> getIntersection(List<Integer> a,
                                                 List<Integer> b) {

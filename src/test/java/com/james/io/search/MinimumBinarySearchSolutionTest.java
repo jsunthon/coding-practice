@@ -1,6 +1,5 @@
 package com.james.io.search;
 
-import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.Collections;
@@ -14,7 +13,7 @@ public class MinimumBinarySearchSolutionTest {
 
     @Test
     public void testEpiBinarySearch() {
-        List<Integer> list = Stream.of(-14, -10 , 2, 108, 108,
+        List<Integer> list = Stream.of(-14, -10, 2, 108, 108,
                 243, 285, 285, 285, 401)
                 .collect(Collectors.toList());
         int index = MinimumBinarySearchSolution.epiBinarySearch(list, 285);
@@ -37,7 +36,7 @@ public class MinimumBinarySearchSolutionTest {
 
     @Test
     public void testEpiBinarySearchNonEmptyNotFound() {
-        List<Integer> list = Stream.of(-14, -10 , 2, 108, 108,
+        List<Integer> list = Stream.of(-14, -10, 2, 108, 108,
                 243, 285, 285, 285, 401)
                 .collect(Collectors.toList());
         assertEquals(-1,
@@ -54,7 +53,7 @@ public class MinimumBinarySearchSolutionTest {
 
     @Test
     public void testCustomBinarySearch() {
-        List<Integer> list = Stream.of(-14, -10 , 2, 108, 108,
+        List<Integer> list = Stream.of(-14, -10, 2, 108, 108,
                 243, 285, 285, 285, 401)
                 .collect(Collectors.toList());
         int index = MinimumBinarySearchSolution.customBinarySearch(list, 285);
@@ -77,7 +76,7 @@ public class MinimumBinarySearchSolutionTest {
 
     @Test
     public void testCustomBinarySearchNonEmptyNotFound() {
-        List<Integer> list = Stream.of(-14, -10 , 2, 108, 108,
+        List<Integer> list = Stream.of(-14, -10, 2, 108, 108,
                 243, 285, 285, 285, 401)
                 .collect(Collectors.toList());
         assertEquals(-1,

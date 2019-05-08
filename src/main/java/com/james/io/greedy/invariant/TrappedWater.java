@@ -11,9 +11,10 @@ public class TrappedWater {
         int right;
         int max;
 
-        public Pair() {}
+        public Pair() {
+        }
 
-        public Pair(int left, int right, int max)  {
+        public Pair(int left, int right, int max) {
             this.left = left;
             this.right = right;
             this.max = max;

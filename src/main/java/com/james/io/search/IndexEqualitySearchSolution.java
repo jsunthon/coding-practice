@@ -7,7 +7,8 @@ import java.util.List;
  */
 public class IndexEqualitySearchSolution {
 
-    private IndexEqualitySearchSolution() {}
+    private IndexEqualitySearchSolution() {
+    }
 
     public static int searchIndexEqualsWithNoDuplicate(List<Integer> list) {
         int low = 0;

@@ -9,8 +9,8 @@ public class CustomTransformStringSolution {
     private int res = -1;
 
     int getProductionSequence(Set<String> dict,
-                                     String s,
-                                     String t) {
+                              String s,
+                              String t) {
         Map<String, Set<String>> graph = getGraph(dict);
         dfs(graph, Stream.of(s).collect(Collectors.toCollection(LinkedHashSet::new)), s, t);
         return res;

@@ -1,7 +1,6 @@
 package com.james.io.sort;
 
 import com.james.io.sort.RenderCalendarSolution.Event;
-import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.Arrays;

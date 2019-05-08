@@ -12,7 +12,7 @@ public class MinimumBinarySearchSolution {
         int high = list.size() - 1;
         int midValue;
         int midIndex;
-        int result = - 1;
+        int result = -1;
         while (low <= high) {
             midIndex = low + ((high - low) / 2);
             midValue = list.get(midIndex);

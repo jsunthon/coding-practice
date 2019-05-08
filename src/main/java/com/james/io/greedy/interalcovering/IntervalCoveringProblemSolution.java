@@ -1,6 +1,5 @@
 package com.james.io.greedy.interalcovering;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;

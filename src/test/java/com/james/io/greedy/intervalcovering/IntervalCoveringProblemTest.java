@@ -2,17 +2,14 @@ package com.james.io.greedy.intervalcovering;
 
 import com.james.io.greedy.interalcovering.Interval;
 import com.james.io.greedy.interalcovering.IntervalCoveringProblemSolution;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static junit.framework.TestCase.assertTrue;
-import static org.junit.Assert.assertEquals;
 
 public class IntervalCoveringProblemTest {
 
@@ -33,10 +30,10 @@ public class IntervalCoveringProblemTest {
         interval3 = new Interval(0, 3);
         interval4 = new Interval(2, 6);
 
-        interval1_1 = new Integer[] { interval1.start, interval1.end };
-        interval2_1 = new Integer[] { interval2.start, interval2.end };
-        interval3_1 = new Integer[] { interval3.start, interval3.end };
-        interval4_1 = new Integer[] { interval4.start, interval4.end };
+        interval1_1 = new Integer[]{interval1.start, interval1.end};
+        interval2_1 = new Integer[]{interval2.start, interval2.end};
+        interval3_1 = new Integer[]{interval3.start, interval3.end};
+        interval4_1 = new Integer[]{interval4.start, interval4.end};
     }
 
     @Test

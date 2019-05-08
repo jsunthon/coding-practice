@@ -4,9 +4,9 @@ import java.util.List;
 
 /**
  * Solution to problem 12.6 of EPI
- *
+ * <p>
  * This is a general search algorithm.
- *
+ * <p>
  * All O(1) space
  * time varies depending on the algorithm
  */

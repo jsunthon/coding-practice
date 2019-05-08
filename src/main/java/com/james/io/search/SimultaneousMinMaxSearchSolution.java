@@ -14,6 +14,7 @@ public class SimultaneousMinMaxSearchSolution {
      * and maximal element in O(n) time and O(1) space using at most
      * 3n/2 - 2 comparisons (n/2 to divide, and n/2-1 to find min and max
      * respectively
+     *
      * @param list
      * @return
      */

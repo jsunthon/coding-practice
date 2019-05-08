@@ -1,7 +1,5 @@
 package com.james.io.sort.model;
 
-import java.util.Objects;
-
 // immutable name using the builder pattern
 public class Name implements Comparable<Name> {
     private final String firstName;

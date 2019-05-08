@@ -41,6 +41,7 @@ public class RenderCalendarSolution {
 
     /**
      * O(n log n) time, O(n) space
+     *
      * @param events
      * @return
      */

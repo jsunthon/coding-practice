@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class TransformStringSolutionTest {
-    
+
     @Test
     public void testshortestProductionSequence_ok() {
         final String s = "cat";

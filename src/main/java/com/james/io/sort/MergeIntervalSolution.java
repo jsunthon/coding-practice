@@ -3,13 +3,48 @@ package com.james.io.sort;
 import com.james.io.model.Interval;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 /**
  * Solution to problem 14.5 of EPI
  */
 public class MergeIntervalSolution {
+
+    /**
+     * Add interval to disjoint intervals to get merged interval.
+     * <p>
+     * EPI solution
+     *
+     * @param disjointIntervals
+     * @param newInterval
+     * @return
+     */
+    public static List<Interval> addInterval(List<Interval> disjointIntervals,
+                                             Interval newInterval) {
+        final List<Interval> mergedIntervals = new ArrayList<>();
+
+        int i = 0;
+
+        // step 1
+        while (i < disjointIntervals.size()
+                && disjointIntervals.get(i).getRight() < newInterval.getLeft()) {
+            mergedIntervals.add(disjointIntervals.get(i++));
+        }
+
+        // step 2
+        while (i < disjointIntervals.size()
+                && disjointIntervals.get(i).getLeft() < newInterval.getRight()) {
+            newInterval = new Interval(Math.min(disjointIntervals.get(i).getLeft(), newInterval.getLeft()),
+                    Math.max(disjointIntervals.get(i).getRight(), newInterval.getRight()));
+            i++;
+        }
+        mergedIntervals.add(newInterval);
+
+        // step 3
+        mergedIntervals.addAll(disjointIntervals.subList(i, disjointIntervals.size()));
+
+        return mergedIntervals;
+    }
 
     // overly long and possibly shit slution
     // still O(n) time, O(n) space
@@ -37,11 +72,11 @@ public class MergeIntervalSolution {
     }
 
     private static int findStart(List<Interval> intervals,
-                                Interval interval) {
+                                 Interval interval) {
         int start = 0;
 
         while (start < intervals.size()
-            && interval.getLeft() > intervals.get(start).getRight()) {
+                && interval.getLeft() > intervals.get(start).getRight()) {
             start++;
         }
 
@@ -49,11 +84,11 @@ public class MergeIntervalSolution {
     }
 
     private static Interval mergeHelper(List<Interval> intervals,
-                                       int start,
-                                       Interval interval) {
+                                        int start,
+                                        Interval interval) {
         int pos = start;
         final int startRes = Math.min(intervals.get(pos).getLeft(),
-                                interval.getLeft());
+                interval.getLeft());
         int endRes = 0;
         while (pos < intervals.size()
                 && interval.getRight() >= intervals.get(pos).getLeft()) {
@@ -64,7 +99,7 @@ public class MergeIntervalSolution {
     }
 
     private static int findEnd(List<Interval> intervals,
-                              Interval interval) {
+                               Interval interval) {
         int end = 0;
 
         while (end < intervals.size()
