@@ -1,6 +1,6 @@
 package com.james.io.search;
 
-import com.james.io.search.model.Interval;
+import com.james.io.model.Interval;
 
 import java.util.List;
 

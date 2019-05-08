@@ -1,7 +1,6 @@
 package com.james.io.search;
 
-import com.james.io.search.model.Interval;
-import org.junit.Assert;
+import com.james.io.model.Interval;
 import org.junit.Test;
 
 import java.util.Arrays;

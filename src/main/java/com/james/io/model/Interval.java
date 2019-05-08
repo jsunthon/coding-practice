@@ -1,4 +1,4 @@
-package com.james.io.search.model;
+package com.james.io.model;
 
 public final class Interval {
     private final int left;
@@ -37,6 +37,6 @@ public final class Interval {
 
     @Override
     public String toString() {
-        return left + ", " + right;
+        return "[" + left + ", " + right + "]";
     }
 }
