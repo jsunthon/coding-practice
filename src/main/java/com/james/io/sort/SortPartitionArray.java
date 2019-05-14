@@ -49,8 +49,59 @@ public class SortPartitionArray {
         }
     }
 
+    /**
+     * O(n) time, O(# of unique ages) space, but this space should be less
+     * than O(n) since the # of unique ages is a lot less than the number of students
+     * @param students  the students to student
+     */
     public static void sortInPlace(List<Student> students) {
-        throw new AssertionError();
+        if (!students.isEmpty()) {
+            Map<Integer, Integer> ageToCount = getAgeToCount(students);
+            Map<Integer, Integer> ageToOffset = getAgeToOffset(ageToCount);
+
+            while (!ageToOffset.entrySet().isEmpty()) {
+                Map.Entry<Integer, Integer> current = ageToOffset.entrySet().iterator().next();
+                int toAge = students.get(current.getValue()).age;
+                int toValue = ageToOffset.get(toAge);
+                Collections.swap(students, toValue, current.getValue());
+
+                Integer count = ageToCount.get(toAge) - 1;
+
+                if (count > 0) {
+                    ageToCount.put(toAge, count);
+                    ageToOffset.put(toAge, ageToOffset.get(toAge) + 1);
+                } else {
+                    ageToOffset.remove(toAge);
+                }
+            }
+        }
+    }
+
+    private static Map<Integer, Integer> getAgeToCount(List<Student> students) {
+        Map<Integer, Integer> ageToCount = new HashMap<>();
+
+        for (Student student: students) {
+            if (ageToCount.containsKey(student.age)) {
+                int count = ageToCount.get(student.age);
+                ageToCount.put(student.age, count + 1);
+            } else {
+                ageToCount.put(student.age, 1);
+            }
+        }
+
+        return ageToCount;
+    }
+
+    private static Map<Integer, Integer> getAgeToOffset(Map<Integer, Integer> ageToCount) {
+        int offset = 0;
+        final Map<Integer, Integer> ageToOffset = new HashMap<>();
+
+        for (Map.Entry<Integer, Integer> entry : ageToCount.entrySet()) {
+            ageToOffset.put(entry.getKey(), offset);
+            offset += entry.getValue();
+        }
+
+        return ageToOffset;
     }
 
     /**

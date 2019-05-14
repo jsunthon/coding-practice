@@ -33,4 +33,19 @@ public class SortPartitionArrayTest {
     public void testSortEmpty() {
         assertEquals(Collections.emptyList(), SortPartitionArray.sort(Collections.emptyList()));
     }
+
+    @Test
+    public void testSortInPlace() {
+        final List<Student> students = Arrays.asList(GREG, JOHN, PHIL, TIM);
+        final List<Student> expectedStudents = Arrays.asList(GREG, TIM, JOHN, PHIL);
+        SortPartitionArray.sortInPlace(students);
+        assertEquals(expectedStudents, students);
+    }
+
+    @Test
+    public void testSortInPlaceEmpty() {
+        final List<Student> students = Collections.emptyList();
+        SortPartitionArray.sortInPlace(students);
+        assertEquals(Collections.emptyList(), students);
+    }
 }
