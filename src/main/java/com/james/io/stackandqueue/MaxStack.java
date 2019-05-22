@@ -2,7 +2,6 @@ package com.james.io.stackandqueue;
 
 import java.util.Deque;
 import java.util.LinkedList;
-import java.util.NoSuchElementException;
 import java.util.Objects;
 
 /**
@@ -10,11 +9,11 @@ import java.util.Objects;
  */
 public class MaxStack {
 
-    Deque<ListNode> maxStack;
-    ListNode head;
+    private final Deque<ListNode> linkedMaximums;
+    private ListNode head;
 
     public MaxStack() {
-        maxStack = new LinkedList<>();
+        linkedMaximums = new LinkedList<>();
     }
 
     public static class ListNode implements Comparable<ListNode> {
@@ -61,11 +60,11 @@ public class MaxStack {
         ListNode listNode = new ListNode(val);
 
         if (head == null) {
-            maxStack.addFirst(listNode);
+            linkedMaximums.addFirst(listNode);
             head = listNode;
         } else {
-            if (listNode.val > maxStack.peek().val) {
-                maxStack.addFirst(listNode);
+            if (listNode.val > linkedMaximums.peek().val) {
+                linkedMaximums.addFirst(listNode);
             }
             head.prev = listNode;
             listNode.next = head;
@@ -77,8 +76,8 @@ public class MaxStack {
         if (head == null) {
             throw new IllegalStateException("Cannot remove element from empty stack");
         }
-        if (head.equals(maxStack.peekFirst())) {
-            maxStack.removeFirst();
+        if (head.equals(linkedMaximums.peekFirst())) {
+            linkedMaximums.removeFirst();
         }
         ListNode temp = head;
         head = head.next;
@@ -92,6 +91,6 @@ public class MaxStack {
             throw new IllegalStateException("Cannot get maximal element from empty stack");
         }
 
-        return maxStack.peekFirst().val;
+        return linkedMaximums.peekFirst().val;
     }
 }

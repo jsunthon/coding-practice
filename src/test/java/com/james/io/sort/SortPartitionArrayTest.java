@@ -37,7 +37,7 @@ public class SortPartitionArrayTest {
     @Test
     public void testSortInPlace() {
         final List<Student> students = Arrays.asList(GREG, JOHN, PHIL, TIM);
-        final List<Student> expectedStudents = Arrays.asList(GREG, TIM, JOHN, PHIL);
+        final List<Student> expectedStudents = Arrays.asList(PHIL, JOHN, GREG, TIM);
         SortPartitionArray.sortInPlace(students);
         assertEquals(expectedStudents, students);
     }
