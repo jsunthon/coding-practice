@@ -75,7 +75,7 @@ public class MaxStack {
 
     public int pop() {
         if (head == null) {
-            throw new NoSuchElementException("Cannot remove element from empty stack");
+            throw new IllegalStateException("Cannot remove element from empty stack");
         }
         if (head.equals(maxStack.peekFirst())) {
             maxStack.removeFirst();
@@ -89,7 +89,7 @@ public class MaxStack {
 
     public int getMax() {
         if (head == null) {
-            throw new NoSuchElementException("Cannot get maximal element from empty stack");
+            throw new IllegalStateException("Cannot get maximal element from empty stack");
         }
 
         return maxStack.peekFirst().val;

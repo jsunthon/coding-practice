@@ -33,4 +33,16 @@ public class MaxStackTest {
         Assert.assertEquals(100, maxStack.pop());
         Assert.assertEquals(4, maxStack.getMax());
     }
+
+    @Test(expected = IllegalStateException.class)
+    public void testMaxStackPopWhenEmpty() {
+        MaxStack maxStack = new MaxStack();
+        maxStack.pop();
+    }
+
+    @Test(expected = IllegalStateException.class)
+    public void testMaxStackGetMaxWhenEmpty() {
+        MaxStack maxStack = new MaxStack();
+        maxStack.getMax();
+    }
 }
