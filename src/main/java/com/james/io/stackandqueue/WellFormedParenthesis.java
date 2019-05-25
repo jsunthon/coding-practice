@@ -27,7 +27,7 @@ public class WellFormedParenthesis {
                 if (potentialLeft != null && isMatchForRight(c, potentialLeft)) {
                     stack.removeFirst();
                 } else {
-                    stack.addFirst(c);
+                    return false;
                 }
             } else {
                 throw new IllegalArgumentException(String.format(ILLEGAL_CHAR_MSG, c));
