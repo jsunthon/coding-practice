@@ -15,6 +15,10 @@ public class LevelOrderTraversal {
         BinaryTreeNode left;
         BinaryTreeNode right;
 
+        BinaryTreeNode(int val) {
+            this(val, null, null);
+        }
+
         BinaryTreeNode(int val, BinaryTreeNode left, BinaryTreeNode right) {
             this.val = val;
             this.left = left;
