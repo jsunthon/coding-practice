@@ -1,5 +1,8 @@
 package com.james.io.string;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Custom solution to 7.9 of EPI
  *
@@ -56,6 +59,38 @@ public class RomanToDecimal {
                 res += currValue.val;
             }
         }
+        return res;
+    }
+
+    /**
+     * EPI, O(n) time solution, assume a valid romanNum of len >= 1
+     * @param romanNum
+     * @return
+     */
+    public static int romanToDecimalEpi(String romanNum) {
+        Map<Character, Integer> romanMap = new HashMap<>();
+        romanMap.put('I', 1);
+        romanMap.put('V', 5);
+        romanMap.put('X', 10);
+        romanMap.put('L', 50);
+        romanMap.put('C', 100);
+        romanMap.put('D', 500);
+        romanMap.put('M', 1000);
+
+        int res = 0;
+
+        res += romanMap.get(romanNum.charAt(romanNum.length() - 1));
+
+        for (int i = romanNum.length() - 2; i >= 0; i--) {
+            int currValue = romanMap.get(romanNum.charAt(i));
+            int nextValue = romanMap.get(romanNum.charAt(i + 1));
+            if (currValue < nextValue) {
+                res -= currValue;
+            } else {
+                res += currValue;
+            }
+        }
+
         return res;
     }
 }
