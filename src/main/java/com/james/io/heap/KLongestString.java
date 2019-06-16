@@ -2,6 +2,10 @@ package com.james.io.heap;
 
 import java.util.*;
 
+
+/**
+ * Intro of EPI ch 11
+ */
 public class KLongestString {
 
     public static List<String> getKLongest(int k, Iterator<String> iter) {
