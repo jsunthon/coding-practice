@@ -17,6 +17,14 @@ public class KLargestElementsTest {
         List<Integer> maxHeap = Arrays.asList(561, 314, 401, 28, 156, 359, 271, 11, 3);
         List<Integer> kLargest = KLargestElements.kLargest(maxHeap, 4);
 
-        assertEquals(new HashSet<>(kLargest), Stream.of(561, 314, 401, 359).collect(Collectors.toSet()));
+        assertEquals(Stream.of(561, 314, 401, 359).collect(Collectors.toSet()), new HashSet<>(kLargest));
+    }
+
+    @Test
+    public void kLargestEpi() {
+        List<Integer> maxHeap = Arrays.asList(561, 314, 401, 28, 156, 359, 271, 11, 3);
+        List<Integer> kLargest = KLargestElements.kLargestEpi(maxHeap, 4);
+
+        assertEquals(Arrays.asList(561, 401, 359, 314), kLargest);
     }
 }
