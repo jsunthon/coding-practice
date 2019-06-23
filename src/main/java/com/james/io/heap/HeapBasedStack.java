@@ -6,6 +6,12 @@ import java.util.Queue;
 
 /**
  * 11.7 of EPI
+ *
+ * O(log n) for push and pop operations, O(1) space
+ *
+ *
+ * O(n log n) for n total operations, O(n) space
+ *
  */
 public class HeapBasedStack {
 
