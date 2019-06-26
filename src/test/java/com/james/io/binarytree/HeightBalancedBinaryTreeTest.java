@@ -46,4 +46,39 @@ public class HeightBalancedBinaryTreeTest {
         assertFalse(tree.isHeightBalanced(node0));
     }
 
+
+    @Test
+    public void testIsHeightBalancedEpiSimple() {
+        TreeNode node1 = new TreeNode(1);
+        TreeNode node2 = new TreeNode(2);
+
+        TreeNode node0 = new TreeNode(0, node1, node2);
+
+        HeightBalancedBinaryTree tree = new HeightBalancedBinaryTree();
+
+        assertTrue(HeightBalancedBinaryTree.isHeightBalancedEpi(node0));
+    }
+
+    @Test
+    public void testIsHeightBalancedEpiLeftSkewedNoBalance() {
+        TreeNode node2 = new TreeNode(2);
+
+        TreeNode node1 = new TreeNode(1, node2, null);
+
+        TreeNode node0 = new TreeNode(0, node1, null);
+
+        assertFalse(HeightBalancedBinaryTree.isHeightBalancedEpi(node0));
+    }
+
+    @Test
+    public void testIsHeightBalancedEpiRightSkewedNoBalance() {
+        TreeNode node2 = new TreeNode(2);
+
+        TreeNode node1 = new TreeNode(1, null, node2);
+
+        TreeNode node0 = new TreeNode(0, null, node1);
+
+        assertFalse(HeightBalancedBinaryTree.isHeightBalancedEpi(node0));
+    }
+
 }

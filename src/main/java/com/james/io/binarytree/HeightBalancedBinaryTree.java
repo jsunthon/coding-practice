@@ -23,6 +23,16 @@ public class HeightBalancedBinaryTree {
         }
     }
 
+    static class BalancedStatusWithHeight {
+        int height;
+        boolean isBalanced;
+
+        BalancedStatusWithHeight(int height, boolean isBalanced) {
+            this.height = height;
+            this.isBalanced = isBalanced;
+        }
+    }
+
     public boolean isHeightBalanced(TreeNode root) {
         postorder(root, 0);
 
@@ -40,5 +50,30 @@ public class HeightBalancedBinaryTree {
         }
 
         return 0;
+    }
+
+    public static boolean isHeightBalancedEpi(TreeNode root) {
+        return checkBalanced(root).isBalanced;
+    }
+
+    private static BalancedStatusWithHeight checkBalanced(TreeNode root) {
+        if (root == null) {
+            return new BalancedStatusWithHeight(-1, true);
+        }
+
+        BalancedStatusWithHeight leftStatus = checkBalanced(root.left);
+        if (!leftStatus.isBalanced) {
+            return leftStatus;
+        }
+
+        BalancedStatusWithHeight rightStatus = checkBalanced(root.right);
+        if (!rightStatus.isBalanced) {
+            return rightStatus;
+        }
+
+        int height = Math.max(leftStatus.height, rightStatus.height) + 1;
+        int heightDiff = Math.abs(leftStatus.height - rightStatus.height);
+
+        return new BalancedStatusWithHeight(height, heightDiff <= 1);
     }
 }
