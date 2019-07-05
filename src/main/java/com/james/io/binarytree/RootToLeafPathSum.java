@@ -3,7 +3,7 @@ package com.james.io.binarytree;
 import com.james.io.binarytree.model.BinaryTreeNode;
 
 /**
- * 10.6 of EPI, brute force
+ * 10.6 of EPI,
  *
  * O(n) time, O(h) space, where n = # of nodes and h is the height of the tree
  */
@@ -14,15 +14,16 @@ public class RootToLeafPathSum {
     }
 
     private static boolean hasPathSum(BinaryTreeNode node, int pathSum, int partialPathSum) {
-        if (node != null) {
-            partialPathSum += node.value;
+        if (node == null) {
+            return false;
+        }
+        partialPathSum += node.value;
 
-            if (node.left != null || node.right != null) {
-                return hasPathSum(node.left, pathSum, partialPathSum)
-                        || hasPathSum(node.right, pathSum, partialPathSum);
-            }
+        if (node.left == null && node.right == null) {
+            return partialPathSum == pathSum;
         }
 
-        return partialPathSum == pathSum;
+        return hasPathSum(node.left, pathSum, partialPathSum)
+                || hasPathSum(node.right, pathSum, partialPathSum);
     }
 }
