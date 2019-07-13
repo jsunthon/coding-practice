@@ -2,9 +2,9 @@ package com.james.io.stackandqueue;
 
 public interface EpiStack {
 
-    boolean isEmpty();
+  boolean isEmpty();
 
-    void push(Integer val);
+  void push(Integer val);
 
-    Integer pop();
+  Integer pop();
 }

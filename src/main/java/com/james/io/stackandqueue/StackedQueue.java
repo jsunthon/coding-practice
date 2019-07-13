@@ -8,37 +8,37 @@ import java.util.LinkedList;
  */
 public class StackedQueue<T> {
 
-    private final Deque<T> enq;
-    private final Deque<T> deq;
+  private final Deque<T> enq;
+  private final Deque<T> deq;
 
-    public StackedQueue() {
-        enq = new LinkedList<>();
-        deq = new LinkedList<>();
+  public StackedQueue() {
+    enq = new LinkedList<>();
+    deq = new LinkedList<>();
+  }
+
+  public void enqueue(T val) {
+    enq.addLast(val);
+  }
+
+  public T dequeue() {
+    if (isEmpty()) {
+      throw new IllegalStateException("Empty queue");
     }
 
-    public void enqueue(T val) {
-        enq.addLast(val);
+    if (deq.isEmpty()) {
+      while (!enq.isEmpty()) {
+        deq.addLast(enq.removeLast());
+      }
     }
 
-    public T dequeue() {
-        if (isEmpty()) {
-            throw new IllegalStateException("Empty queue");
-        }
+    return deq.removeLast();
+  }
 
-        if (deq.isEmpty()) {
-            while (!enq.isEmpty()) {
-                deq.addLast(enq.removeLast());
-            }
-        }
+  public int size() {
+    return enq.size() + deq.size();
+  }
 
-        return deq.removeLast();
-    }
-
-    public int size() {
-        return enq.size() + deq.size();
-    }
-
-    public boolean isEmpty() {
-        return size() == 0;
-    }
+  public boolean isEmpty() {
+    return size() == 0;
+  }
 }

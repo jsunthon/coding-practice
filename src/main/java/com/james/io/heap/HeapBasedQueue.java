@@ -8,42 +8,43 @@ import java.util.Queue;
  */
 public class HeapBasedQueue {
 
-    private static class HeapValue implements Comparable<HeapValue> {
-        int value;
-        int position;
+  private static class HeapValue implements Comparable<HeapValue> {
 
-        HeapValue(int value, int position) {
-            this.value = value;
-            this.position = position;
-        }
+    int value;
+    int position;
 
-        @Override
-        public int compareTo(HeapValue other) {
-            return value - other.value;
-        }
+    HeapValue(int value, int position) {
+      this.value = value;
+      this.position = position;
     }
 
-    private static final int DEF_CAP = 16;
-
-    private final Queue<HeapValue> minHeap;
-
-    public HeapBasedQueue() {
-        minHeap = new PriorityQueue<>(DEF_CAP);
+    @Override
+    public int compareTo(HeapValue other) {
+      return value - other.value;
     }
+  }
 
-    public void add(int value) {
-        minHeap.add(new HeapValue(value, minHeap.size()));
-    }
+  private static final int DEF_CAP = 16;
 
-    public int remove() {
-        return minHeap.remove().value;
-    }
+  private final Queue<HeapValue> minHeap;
 
-    public int peek() {
-        return minHeap.peek().value;
-    }
+  public HeapBasedQueue() {
+    minHeap = new PriorityQueue<>(DEF_CAP);
+  }
 
-    public boolean isEmpty() {
-        return minHeap.isEmpty();
-    }
+  public void add(int value) {
+    minHeap.add(new HeapValue(value, minHeap.size()));
+  }
+
+  public int remove() {
+    return minHeap.remove().value;
+  }
+
+  public int peek() {
+    return minHeap.peek().value;
+  }
+
+  public boolean isEmpty() {
+    return minHeap.isEmpty();
+  }
 }

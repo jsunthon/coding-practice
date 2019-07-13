@@ -2,7 +2,6 @@ package com.james.io.graph.deadlockdetection;
 
 import com.james.io.graph.deadlockdetection.model.GraphVertex;
 import com.james.io.graph.deadlockdetection.model.GraphVertex.Color;
-
 import java.util.List;
 
 /**
@@ -11,34 +10,34 @@ import java.util.List;
  */
 public class DirectedSolution {
 
-    /**
-     * Determines if the given graph has a deadlock
-     *
-     * @param graphVertices the graph
-     * @return whether or not the graph has a deadlock
-     */
-    public boolean isDeadlock(List<GraphVertex> graphVertices) {
-        if (graphVertices != null) {
-            for (GraphVertex graphVertex : graphVertices) {
-                if (graphVertex.color.equals(Color.WHITE) && hasCycle(graphVertex, null)) {
-                    return true;
-                }
-            }
+  /**
+   * Determines if the given graph has a deadlock
+   *
+   * @param graphVertices the graph
+   * @return whether or not the graph has a deadlock
+   */
+  public boolean isDeadlock(List<GraphVertex> graphVertices) {
+    if (graphVertices != null) {
+      for (GraphVertex graphVertex : graphVertices) {
+        if (graphVertex.color.equals(Color.WHITE) && hasCycle(graphVertex, null)) {
+          return true;
         }
-        return false;
+      }
     }
+    return false;
+  }
 
-    private boolean hasCycle(GraphVertex curr, GraphVertex prev) {
-        if (curr == prev || curr.color.equals(Color.GRAY)) {
-            return true;
-        }
-        curr.color = Color.GRAY;
-        for (GraphVertex graphVertex : curr.edges) {
-            if (graphVertex.color != Color.BLACK && hasCycle(graphVertex, curr)) {
-                return true;
-            }
-        }
-        curr.color = Color.BLACK;
-        return false;
+  private boolean hasCycle(GraphVertex curr, GraphVertex prev) {
+    if (curr == prev || curr.color.equals(Color.GRAY)) {
+      return true;
     }
+    curr.color = Color.GRAY;
+    for (GraphVertex graphVertex : curr.edges) {
+      if (graphVertex.color != Color.BLACK && hasCycle(graphVertex, curr)) {
+        return true;
+      }
+    }
+    curr.color = Color.BLACK;
+    return false;
+  }
 }

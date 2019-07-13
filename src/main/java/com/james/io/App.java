@@ -7,11 +7,11 @@ package com.james.io;
  * <p>
  * and optionally,
  * <p>
- * LeetCode
- * Cracking the Coding Interview
+ * LeetCode Cracking the Coding Interview
  */
 public class App {
-    public static void main(String[] args) {
-        System.out.println("Started coding solutions!");
-    }
+
+  public static void main(String[] args) {
+    System.out.println("Started coding solutions!");
+  }
 }

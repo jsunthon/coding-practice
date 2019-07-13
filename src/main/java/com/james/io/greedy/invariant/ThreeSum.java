@@ -8,13 +8,13 @@ import java.util.List;
  */
 public class ThreeSum {
 
-    public static boolean threeSum(List<Integer> nums, int value) {
-        Collections.sort(nums);
-        for (Integer num : nums) {
-            if (TwoSum.twoSum(nums, value - num)) {
-                return true;
-            }
-        }
-        return false;
+  public static boolean threeSum(List<Integer> nums, int value) {
+    Collections.sort(nums);
+    for (Integer num : nums) {
+      if (TwoSum.twoSum(nums, value - num)) {
+        return true;
+      }
     }
+    return false;
+  }
 }

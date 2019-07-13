@@ -11,50 +11,50 @@ import java.util.Queue;
  *
  *
  * O(n log n) for n total operations, O(n) space
- *
  */
 public class HeapBasedStack {
 
-    private static final int INIT_CAPACITY = 16;
+  private static final int INIT_CAPACITY = 16;
 
-    private static class HeapValue implements Comparable<HeapValue> {
-        int value;
-        int position;
+  private static class HeapValue implements Comparable<HeapValue> {
 
-        HeapValue(int value, int position) {
-            this.value = value;
-            this.position = position;
-        }
+    int value;
+    int position;
 
-        @Override
-        public int compareTo(HeapValue other) {
-            return position - other.position;
-        }
+    HeapValue(int value, int position) {
+      this.value = value;
+      this.position = position;
     }
 
-    private final Queue<HeapValue> maxHeap;
-
-    public HeapBasedStack() {
-        maxHeap = new PriorityQueue<>(INIT_CAPACITY, Collections.reverseOrder());
+    @Override
+    public int compareTo(HeapValue other) {
+      return position - other.position;
     }
+  }
 
-    public void push(int value) {
-        maxHeap.offer(new HeapValue(value, maxHeap.size()));
-    }
+  private final Queue<HeapValue> maxHeap;
 
-    public int pop() {
-        if (isEmpty()) {
-            throw new UnsupportedOperationException("Stack is empty");
-        }
-        return maxHeap.remove().value;
-    }
+  public HeapBasedStack() {
+    maxHeap = new PriorityQueue<>(INIT_CAPACITY, Collections.reverseOrder());
+  }
 
-    public boolean isEmpty() {
-        return maxHeap.isEmpty();
-    }
+  public void push(int value) {
+    maxHeap.offer(new HeapValue(value, maxHeap.size()));
+  }
 
-    public int size() {
-        return maxHeap.size();
+  public int pop() {
+    if (isEmpty()) {
+      throw new UnsupportedOperationException("Stack is empty");
     }
+    return maxHeap.remove().value;
+  }
+
+  public boolean isEmpty() {
+    return maxHeap.isEmpty();
+  }
+
+  public int size() {
+    return maxHeap.size();
+  }
 
 }

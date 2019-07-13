@@ -2,51 +2,53 @@ package com.james.io.sort.model;
 
 // immutable name using the builder pattern
 public class Name implements Comparable<Name> {
-    private final String firstName;
 
-    private final String lastName;
+  private final String firstName;
 
-    public static class Builder {
-        private String firstName;
-        private String lastName;
+  private final String lastName;
 
-        public Builder firstName(String firstName) {
-            this.firstName = firstName;
-            return this;
-        }
+  public static class Builder {
 
-        public Builder lastName(String lastName) {
-            this.lastName = lastName;
-            return this;
-        }
+    private String firstName;
+    private String lastName;
 
-        public Name build() {
-            return new Name(this);
-        }
+    public Builder firstName(String firstName) {
+      this.firstName = firstName;
+      return this;
     }
 
-    private Name(Builder builder) {
-        this.firstName = builder.firstName;
-        this.lastName = builder.lastName;
+    public Builder lastName(String lastName) {
+      this.lastName = lastName;
+      return this;
     }
 
-    @Override
-    public int compareTo(Name other) {
-        int firstNameCmp = firstName.compareTo(other.firstName);
-        if (firstNameCmp != 0) {
-            return firstNameCmp;
-        }
+    public Name build() {
+      return new Name(this);
+    }
+  }
 
-        return lastName.compareTo(other.lastName);
+  private Name(Builder builder) {
+    this.firstName = builder.firstName;
+    this.lastName = builder.lastName;
+  }
+
+  @Override
+  public int compareTo(Name other) {
+    int firstNameCmp = firstName.compareTo(other.firstName);
+    if (firstNameCmp != 0) {
+      return firstNameCmp;
     }
 
-    public String getFirstName() {
-        return firstName;
-    }
+    return lastName.compareTo(other.lastName);
+  }
 
-    public String getLastName() {
-        return lastName;
-    }
+  public String getFirstName() {
+    return firstName;
+  }
+
+  public String getLastName() {
+    return lastName;
+  }
 
 //    @Override
 //    public boolean equals(Object other) {
@@ -68,8 +70,8 @@ public class Name implements Comparable<Name> {
 //        return Objects.hashCode(firstName);
 //    }
 
-    @Override
-    public String toString() {
-        return firstName + " " + lastName;
-    }
+  @Override
+  public String toString() {
+    return firstName + " " + lastName;
+  }
 }

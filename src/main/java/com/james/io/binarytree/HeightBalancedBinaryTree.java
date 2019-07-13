@@ -5,75 +5,77 @@ package com.james.io.binarytree;
  */
 public class HeightBalancedBinaryTree {
 
-    private int heightDiff = 0;
+  private int heightDiff = 0;
 
-    static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
+  static class TreeNode {
 
-        TreeNode(int val) {
-            this(val, null, null);
-        }
+    int val;
+    TreeNode left;
+    TreeNode right;
 
-        TreeNode(int val, TreeNode left, TreeNode right) {
-            this.val = val;
-            this.left = left;
-            this.right = right;
-        }
+    TreeNode(int val) {
+      this(val, null, null);
     }
 
-    static class BalancedStatusWithHeight {
-        int height;
-        boolean isBalanced;
+    TreeNode(int val, TreeNode left, TreeNode right) {
+      this.val = val;
+      this.left = left;
+      this.right = right;
+    }
+  }
 
-        BalancedStatusWithHeight(int height, boolean isBalanced) {
-            this.height = height;
-            this.isBalanced = isBalanced;
-        }
+  static class BalancedStatusWithHeight {
+
+    int height;
+    boolean isBalanced;
+
+    BalancedStatusWithHeight(int height, boolean isBalanced) {
+      this.height = height;
+      this.isBalanced = isBalanced;
+    }
+  }
+
+  public boolean isHeightBalanced(TreeNode root) {
+    postorder(root, 0);
+
+    return heightDiff <= 1;
+  }
+
+  private int postorder(TreeNode node, int depth) {
+    if (heightDiff <= 1 && node != null) {
+      int heightLeft = postorder(node.left, depth + 1);
+      int heightRight = postorder(node.right, depth + 1);
+
+      heightDiff = Math.max(heightDiff, Math.abs(heightRight - heightLeft));
+
+      return Math.max(heightRight, heightLeft) + depth;
     }
 
-    public boolean isHeightBalanced(TreeNode root) {
-        postorder(root, 0);
+    return 0;
+  }
 
-        return heightDiff <= 1;
+  public static boolean isHeightBalancedEpi(TreeNode root) {
+    return checkBalanced(root).isBalanced;
+  }
+
+  private static BalancedStatusWithHeight checkBalanced(TreeNode root) {
+    if (root == null) {
+      return new BalancedStatusWithHeight(-1, true);
     }
 
-    private int postorder(TreeNode node, int depth) {
-        if (heightDiff <= 1 && node != null) {
-            int heightLeft = postorder(node.left, depth + 1);
-            int heightRight = postorder(node.right, depth + 1);
-
-            heightDiff = Math.max(heightDiff, Math.abs(heightRight - heightLeft));
-
-            return Math.max(heightRight, heightLeft) + depth;
-        }
-
-        return 0;
+    BalancedStatusWithHeight leftStatus = checkBalanced(root.left);
+    if (!leftStatus.isBalanced) {
+      return leftStatus;
     }
 
-    public static boolean isHeightBalancedEpi(TreeNode root) {
-        return checkBalanced(root).isBalanced;
+    BalancedStatusWithHeight rightStatus = checkBalanced(root.right);
+    if (!rightStatus.isBalanced) {
+      return rightStatus;
     }
 
-    private static BalancedStatusWithHeight checkBalanced(TreeNode root) {
-        if (root == null) {
-            return new BalancedStatusWithHeight(-1, true);
-        }
+    int height = Math.max(leftStatus.height, rightStatus.height) + 1;
+    int heightDiff = Math.abs(leftStatus.height - rightStatus.height);
 
-        BalancedStatusWithHeight leftStatus = checkBalanced(root.left);
-        if (!leftStatus.isBalanced) {
-            return leftStatus;
-        }
-
-        BalancedStatusWithHeight rightStatus = checkBalanced(root.right);
-        if (!rightStatus.isBalanced) {
-            return rightStatus;
-        }
-
-        int height = Math.max(leftStatus.height, rightStatus.height) + 1;
-        int heightDiff = Math.abs(leftStatus.height - rightStatus.height);
-
-        return new BalancedStatusWithHeight(height, heightDiff <= 1);
-    }
+    return new BalancedStatusWithHeight(height, heightDiff <= 1);
+  }
 }

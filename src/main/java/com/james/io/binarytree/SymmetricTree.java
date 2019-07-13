@@ -5,42 +5,43 @@ package com.james.io.binarytree;
  */
 public class SymmetricTree {
 
-    static class BinaryTreeNode {
-        int value;
-        BinaryTreeNode left;
-        BinaryTreeNode right;
+  static class BinaryTreeNode {
 
-        BinaryTreeNode(int value) {
-            this(value, null, null);
-        }
+    int value;
+    BinaryTreeNode left;
+    BinaryTreeNode right;
 
-        BinaryTreeNode(int value, BinaryTreeNode left, BinaryTreeNode right) {
-            this.value = value;
-            this.left = left;
-            this.right = right;
-        }
+    BinaryTreeNode(int value) {
+      this(value, null, null);
     }
 
-    public static boolean isSymmetric(BinaryTreeNode root) {
-        if (root == null) {
-            return true;
-        }
+    BinaryTreeNode(int value, BinaryTreeNode left, BinaryTreeNode right) {
+      this.value = value;
+      this.left = left;
+      this.right = right;
+    }
+  }
 
-        return isSymmetric(root.left, root.right);
+  public static boolean isSymmetric(BinaryTreeNode root) {
+    if (root == null) {
+      return true;
     }
 
-    private static boolean isSymmetric(BinaryTreeNode left,
-                                       BinaryTreeNode right) {
-        if (left == null && right == null) {
-            return true;
-        }
+    return isSymmetric(root.left, root.right);
+  }
 
-        if (left != null && right != null) {
-            return left.value == right.value
-                    && isSymmetric(left.left, right.right)
-                    && isSymmetric(left.right, right.left);
-        }
-
-        return false;
+  private static boolean isSymmetric(BinaryTreeNode left,
+      BinaryTreeNode right) {
+    if (left == null && right == null) {
+      return true;
     }
+
+    if (left != null && right != null) {
+      return left.value == right.value
+          && isSymmetric(left.left, right.right)
+          && isSymmetric(left.right, right.left);
+    }
+
+    return false;
+  }
 }

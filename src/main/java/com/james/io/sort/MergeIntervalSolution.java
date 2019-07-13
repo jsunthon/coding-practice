@@ -1,7 +1,6 @@
 package com.james.io.sort;
 
 import com.james.io.model.Interval;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,103 +9,100 @@ import java.util.List;
  */
 public class MergeIntervalSolution {
 
-    /**
-     * Add interval to disjoint intervals to get merged interval.
-     * <p>
-     * EPI solution
-     *
-     * @param disjointIntervals
-     * @param newInterval
-     * @return
-     */
-    public static List<Interval> addInterval(List<Interval> disjointIntervals,
-                                             Interval newInterval) {
-        final List<Interval> mergedIntervals = new ArrayList<>();
+  /**
+   * Add interval to disjoint intervals to get merged interval.
+   * <p>
+   * EPI solution
+   */
+  public static List<Interval> addInterval(List<Interval> disjointIntervals,
+      Interval newInterval) {
+    final List<Interval> mergedIntervals = new ArrayList<>();
 
-        int i = 0;
+    int i = 0;
 
-        // step 1
-        while (i < disjointIntervals.size()
-                && disjointIntervals.get(i).getRight() < newInterval.getLeft()) {
-            mergedIntervals.add(disjointIntervals.get(i++));
-        }
-
-        // step 2
-        while (i < disjointIntervals.size()
-                && disjointIntervals.get(i).getLeft() < newInterval.getRight()) {
-            newInterval = new Interval(Math.min(disjointIntervals.get(i).getLeft(), newInterval.getLeft()),
-                    Math.max(disjointIntervals.get(i).getRight(), newInterval.getRight()));
-            i++;
-        }
-        mergedIntervals.add(newInterval);
-
-        // step 3
-        mergedIntervals.addAll(disjointIntervals.subList(i, disjointIntervals.size()));
-
-        return mergedIntervals;
+    // step 1
+    while (i < disjointIntervals.size()
+        && disjointIntervals.get(i).getRight() < newInterval.getLeft()) {
+      mergedIntervals.add(disjointIntervals.get(i++));
     }
 
-    // overly long and possibly shit slution
-    // still O(n) time, O(n) space
-    public static List<Interval> getMergedInterval(List<Interval> intervals,
-                                                   Interval interval) {
-        final List<Interval> result = new ArrayList<>();
+    // step 2
+    while (i < disjointIntervals.size()
+        && disjointIntervals.get(i).getLeft() < newInterval.getRight()) {
+      newInterval = new Interval(
+          Math.min(disjointIntervals.get(i).getLeft(), newInterval.getLeft()),
+          Math.max(disjointIntervals.get(i).getRight(), newInterval.getRight()));
+      i++;
+    }
+    mergedIntervals.add(newInterval);
 
-        int start = findStart(intervals, interval);
+    // step 3
+    mergedIntervals.addAll(disjointIntervals.subList(i, disjointIntervals.size()));
 
-        for (int i = 0; i < start; i++) {
-            result.add(intervals.get(i));
-        }
+    return mergedIntervals;
+  }
 
-        final Interval mergedIntermediate = mergeHelper(intervals, start, interval);
+  // overly long and possibly shit slution
+  // still O(n) time, O(n) space
+  public static List<Interval> getMergedInterval(List<Interval> intervals,
+      Interval interval) {
+    final List<Interval> result = new ArrayList<>();
 
-        result.add(mergedIntermediate);
+    int start = findStart(intervals, interval);
 
-        int end = findEnd(intervals, mergedIntermediate);
-
-        for (int i = end; i < intervals.size(); i++) {
-            result.add(intervals.get(i));
-        }
-
-        return result;
+    for (int i = 0; i < start; i++) {
+      result.add(intervals.get(i));
     }
 
-    private static int findStart(List<Interval> intervals,
-                                 Interval interval) {
-        int start = 0;
+    final Interval mergedIntermediate = mergeHelper(intervals, start, interval);
 
-        while (start < intervals.size()
-                && interval.getLeft() > intervals.get(start).getRight()) {
-            start++;
-        }
+    result.add(mergedIntermediate);
 
-        return start;
+    int end = findEnd(intervals, mergedIntermediate);
+
+    for (int i = end; i < intervals.size(); i++) {
+      result.add(intervals.get(i));
     }
 
-    private static Interval mergeHelper(List<Interval> intervals,
-                                        int start,
-                                        Interval interval) {
-        int pos = start;
-        final int startRes = Math.min(intervals.get(pos).getLeft(),
-                interval.getLeft());
-        int endRes = 0;
-        while (pos < intervals.size()
-                && interval.getRight() >= intervals.get(pos).getLeft()) {
-            endRes = Math.max(intervals.get(pos).getRight(), interval.getRight());
-            pos++;
-        }
-        return new Interval(startRes, endRes);
+    return result;
+  }
+
+  private static int findStart(List<Interval> intervals,
+      Interval interval) {
+    int start = 0;
+
+    while (start < intervals.size()
+        && interval.getLeft() > intervals.get(start).getRight()) {
+      start++;
     }
 
-    private static int findEnd(List<Interval> intervals,
-                               Interval interval) {
-        int end = 0;
+    return start;
+  }
 
-        while (end < intervals.size()
-                && intervals.get(end).getLeft() < interval.getRight()) {
-            end++;
-        }
-
-        return end;
+  private static Interval mergeHelper(List<Interval> intervals,
+      int start,
+      Interval interval) {
+    int pos = start;
+    final int startRes = Math.min(intervals.get(pos).getLeft(),
+        interval.getLeft());
+    int endRes = 0;
+    while (pos < intervals.size()
+        && interval.getRight() >= intervals.get(pos).getLeft()) {
+      endRes = Math.max(intervals.get(pos).getRight(), interval.getRight());
+      pos++;
     }
+    return new Interval(startRes, endRes);
+  }
+
+  private static int findEnd(List<Interval> intervals,
+      Interval interval) {
+    int end = 0;
+
+    while (end < intervals.size()
+        && intervals.get(end).getLeft() < interval.getRight()) {
+      end++;
+    }
+
+    return end;
+  }
 }
